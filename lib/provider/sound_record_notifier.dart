@@ -25,7 +25,7 @@ class SoundRecordNotifier extends ChangeNotifier {
   String initialStorePathRecord = "";
 
   /// recording mp3 sound Object
-  Record recordMp3 = Record();
+  final recordMp3 = AudioRecorder();
 
   /// recording mp3 sound to check if all permisiion passed
   bool _isAcceptedPermission = false;
@@ -259,7 +259,7 @@ class SoundRecordNotifier extends ChangeNotifier {
       buttonPressed = true;
       String recordFilePath = await getFilePath();
       _timer = Timer(const Duration(milliseconds: 900), () {
-        recordMp3.start(path: recordFilePath);
+        recordMp3.start(const RecordConfig(), path: recordFilePath);
       });
 
       if (startRecord != null) {
